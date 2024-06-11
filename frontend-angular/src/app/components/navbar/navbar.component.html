@@ -1,0 +1,18 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-primary mb-4">
+  <div class="container">
+    <div class="navbar-text mr-2">
+      <span class="text-light">Logged In : </span>
+      <a routerLink="/profile">
+        <span class="text-light" routerLink="/profile">{{ userEmail }}</span>
+      </a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/dashboard"> Dashboard </a>
+        </li>
+      </ul>
+    </div>
+    <button class="btn btn-outline-light" (click)="logout()">Logout</button>
+  </div>
+</nav>

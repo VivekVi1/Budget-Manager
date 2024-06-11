@@ -1,0 +1,51 @@
+<app-navbar></app-navbar>
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6 m-auto">
+      <button
+        class="btn btn-light btn-sm mb-2"
+        [routerLink]="['/transactions', walletId]"
+      >
+        <i class="fas fa-chevron-left"></i> Back to Wallet
+      </button>
+      <h4 class="display-4 text-center mb-3">Record New Transaction</h4>
+      <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
+        <div class="form-group mb-3">
+          <input
+            type="number"
+            min="1"
+            formControlName="amount"
+            class="form-control form-control-lg"
+            placeholder="Amount"
+          />
+          @if ((transactionForm.controls['amount'].invalid) &&
+          (transactionForm.controls['amount'].dirty ||
+          transactionForm.controls['amount'].touched)) {
+          @if(transactionForm.controls['amount'].hasError('required')) {
+          <span class="text-danger">Amount is cannot be empty!</span>
+          } @if(transactionForm.controls['amount'].hasError('min')) {
+          <span class="text-danger">Minimum 1!</span>
+          } }
+        </div>
+        <div class="form-group mb-3">
+          <textarea
+            formControlName="description"
+            class="form-control form-control-lg"
+            placeholder="Description"
+          ></textarea>
+        </div>
+        <div class="form-group mb-3">
+          <input
+            type="date"
+            formControlName="transactionDate"
+            class="form-control form-control-lg"
+            placeholder="Transaction Date"
+          />
+        </div>
+        <div class="text-center">
+          <button class="btn btn-primary btn-lg">Record Transaction</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

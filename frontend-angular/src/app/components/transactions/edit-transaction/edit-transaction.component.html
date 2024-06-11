@@ -1,0 +1,43 @@
+<app-navbar></app-navbar>
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6 m-auto">
+      <button
+        class="btn btn-light btn-sm mb-2"
+        [routerLink]="['/transactions', walletId]"
+      >
+        <i class="fas fa-chevron-left"></i> Back to Wallet
+      </button>
+      <h4 class="display-4 text-center mb-3">Edit Transaction</h4>
+      <form [formGroup]="editTransactionForm" (ngSubmit)="handleSubmit()">
+        <div class="form-group mb-3">
+          <input
+            type="number"
+            min="1"
+            name="amount"
+            class="form-control form-control-lg"
+            formControlName="amount"
+          />
+        </div>
+        <div class="form-group mb-3">
+          <textarea
+            name="description"
+            class="form-control form-control-lg"
+            formControlName="description"
+          ></textarea>
+        </div>
+        <div class="form-group mb-3">
+          <input
+            type="date"
+            name="transactionDate"
+            class="form-control form-control-lg"
+            formControlName="transactionDate"
+          />
+        </div>
+        <div class="text-center">
+          <button class="btn btn-primary btn-lg">Edit Transaction</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

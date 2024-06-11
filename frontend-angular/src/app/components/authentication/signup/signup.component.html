@@ -1,0 +1,83 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-lg border-0">
+        <div class="card-body p-4">
+          <h3 class="text-center mb-4">Register</h3>
+          <form [formGroup]="signupForm" (ngSubmit)="handleSubmit()">
+            <div class="form-group mb-3">
+              <label class="form-label" for="name">Name</label>
+              <input
+                type="text"
+                class="form-control form-control-lg"
+                id="name"
+                placeholder="Enter name"
+                name="name"
+                formControlName="name"
+              />
+            </div>
+            @if ((signupForm.controls['name'].invalid) &&
+            (signupForm.controls['name'].dirty ||
+            signupForm.controls['name'].touched)) {
+            @if(signupForm.controls['name'].hasError('required')) {
+            <span class="text-danger">Name is cannot be empty!</span>
+            } @if(signupForm.controls['name'].hasError('minlength')) {
+            <span class="text-danger"
+              >Name is must be at least 3 characters long!</span
+            >
+            } }
+
+            <div class="form-group mb-3">
+              <label class="form-label" for="email">Email address</label>
+              <input
+                type="email"
+                class="form-control form-control-lg"
+                id="email"
+                placeholder="Enter email"
+                name="email"
+                formControlName="email"
+              />
+            </div>
+            @if ((signupForm.controls['email'].invalid) &&
+            (signupForm.controls['email'].dirty ||
+            signupForm.controls['email'].touched)) {
+            @if(signupForm.controls['email'].hasError('required')) {
+            <span class="text-danger">Email is cannot be empty!</span>
+            } @if(signupForm.controls['email'].hasError('email')) {
+            <span class="text-danger">Enter a valid email!</span>
+            } }
+            <div class="form-group mb-3">
+              <label class="form-label" for="password">Password</label>
+              <input
+                type="password"
+                class="form-control form-control-lg"
+                id="password"
+                placeholder="Enter password"
+                name="password"
+                formControlName="password"
+              />
+              @if ((signupForm.controls['password'].invalid) &&
+              (signupForm.controls['password'].dirty ||
+              signupForm.controls['password'].touched)) {
+              @if(signupForm.controls['password'].hasError('required')) {
+              <span class="text-danger">Password is cannot be empty!</span>
+              } @if(signupForm.controls['password'].hasError('minlength')) {
+              <span class="text-danger"
+                >Password must be at least 5 characters!</span
+              >
+              } }
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary btn-lg btn-block">
+                Sign Up
+              </button>
+            </div>
+            <p class="text-center mt-3">
+              Already registered? <a routerLink="/login">Sign in</a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

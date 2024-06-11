@@ -1,0 +1,35 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="display-4 text-left mb-4">My Wallets</h1>
+
+      <div class="card mb-4 text-center">
+        <div class="card-header bg-primary text-white py-3">
+          <h4 class="mb-0">Total Wallets Balance</h4>
+          <h1 class="display-3 mb-0">
+            {{ totalBalance | currency : "INR" }}
+          </h1>
+        </div>
+      </div>
+      <hr class="my-4" />
+      <div class="row">
+        <div class="col-md-12 mb-2 text-right">
+          <button
+            type="button"
+            class="btn btn-primary btn-lg btn-create text-white"
+            routerLink="/createwallet"
+          >
+            Create Wallet <i class="fas fa-plus-circle ml-2"></i>
+          </button>
+        </div>
+        @for (currWallet of wallets; track $index) {
+        <app-dashboard-item
+          [wallet]="currWallet"
+          (walletDeleted)="onWalletDeleted($event)"
+        ></app-dashboard-item>
+        }
+      </div>
+    </div>
+  </div>
+</div>

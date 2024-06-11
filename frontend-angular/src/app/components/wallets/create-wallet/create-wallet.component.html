@@ -1,0 +1,58 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 m-auto">
+      <button class="btn btn-light btn-sm mb-2" [routerLink]="['/dashboard']">
+        <i class="fas fa-chevron-left"></i> Back to Dashboard
+      </button>
+      <h5 class="display-6 text-center mb-4">Create Wallet</h5>
+      <hr class="my-4" />
+      <form [formGroup]="createWalletForm" (ngSubmit)="submitHandler()">
+        <div class="form-group mb-3">
+          <input
+            formControlName="name"
+            type="text"
+            class="form-control"
+            placeholder="Wallet Name"
+          />
+          @if ((createWalletForm.controls['name'].invalid) &&
+          (createWalletForm.controls['name'].dirty ||
+          createWalletForm.controls['name'].touched)) {
+          @if(createWalletForm.controls['name'].hasError('required')) {
+          <span class="text-danger">Name is cannot be empty!</span>
+          } @if(createWalletForm.controls['name'].hasError('minlength')) {
+          <span class="text-danger">Minimum 2 characters long!</span>
+          } }
+        </div>
+        <div class="form-group mb-3">
+          <input
+            formControlName="accountNumber"
+            type="text"
+            class="form-control"
+            placeholder="Wallet Number"
+          />
+        </div>
+        <div class="form-group mb-3">
+          <textarea
+            formControlName="description"
+            class="form-control"
+            placeholder="Description"
+          ></textarea>
+        </div>
+        <div class="form-group mb-3">
+          <input
+            formControlName="currentBalance"
+            type="number"
+            class="form-control"
+            placeholder="Balance"
+          />
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary btn-block">
+            Create
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

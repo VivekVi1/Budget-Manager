@@ -1,0 +1,43 @@
+package com.walletapp.ServiceTest;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import com.walletapp.entity.Wallet;
+import com.walletapp.repository.WalletRepository;
+import com.walletapp.service.UserService;
+import com.walletapp.service.WalletService;
+
+@ExtendWith(MockitoExtension.class)
+public class WalletTest {
+	
+	@InjectMocks
+    WalletService walletService;
+ 
+    @Mock
+    WalletRepository walletRepository; 
+
+    @Test
+    public void testCreateOrUpdate() {
+        Wallet wallet = Wallet.builder()
+        				.id(1l)
+        				.name("Test")
+        				.accountNumber("test")
+        				.description("test")
+        				.build();
+
+
+ 
+        when(walletRepository.save(any(Wallet.class))).thenReturn(wallet);
+ 
+        String result = iAdmin.addMovie(movie);
+ 
+       Assertions.assertThat(result).isNotNull();
+    }
+
+}
